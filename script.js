@@ -16,6 +16,7 @@ let gameOver = false;
 let paused = false;
 
 
+
 const colors = {
 
 I:"#00eaff",
@@ -32,47 +33,39 @@ Z:"#ff3355"
 
 const shapes = {
 
-
 I:[
 [1,1,1,1]
 ],
-
 
 J:[
 [1,0,0],
 [1,1,1]
 ],
 
-
 L:[
 [0,0,1],
 [1,1,1]
 ],
-
 
 O:[
 [1,1],
 [1,1]
 ],
 
-
 S:[
 [0,1,1],
 [1,1,0]
 ],
-
 
 T:[
 [0,1,0],
 [1,1,1]
 ],
 
-
 Z:[
 [1,1,0],
 [0,1,1]
 ]
-
 
 };
 
@@ -90,7 +83,6 @@ return Array.from(
 
 
 function randomPiece(){
-
 
 let keys = Object.keys(shapes);
 
@@ -111,16 +103,13 @@ y:0
 
 };
 
-
 }
 
 
 
 function drawCell(x,y,color){
 
-
 ctx.fillStyle=color;
-
 
 ctx.fillRect(
 x*SIZE,
@@ -129,13 +118,11 @@ SIZE-1,
 SIZE-1
 );
 
-
 }
 
 
 
 function draw(){
-
 
 ctx.clearRect(
 0,
@@ -150,9 +137,7 @@ for(let y=0;y<ROWS;y++){
 
 for(let x=0;x<COLS;x++){
 
-
 if(board[y][x]){
-
 
 drawCell(
 x,
@@ -160,14 +145,11 @@ y,
 colors[board[y][x]]
 );
 
-
-}
-
-
 }
 
 }
 
+}
 
 
 
@@ -178,25 +160,20 @@ row.forEach((cell,x)=>{
 
 if(cell){
 
-
 drawCell(
 piece.x+x,
 piece.y+y,
 colors[piece.type]
 );
 
-
 }
-
 
 
 });
 
 });
 
-
 }
-
 
 
 
@@ -205,16 +182,15 @@ function collision(dx,dy,newShape=piece.shape){
 
 for(let y=0;y<newShape.length;y++){
 
-
 for(let x=0;x<newShape[y].length;x++){
 
 
 if(newShape[y][x]){
 
 
-let nx=piece.x+x+dx;
+let nx = piece.x+x+dx;
 
-let ny=piece.y+y+dy;
+let ny = piece.y+y+dy;
 
 
 
@@ -264,18 +240,9 @@ gameOver=true;
 
 }
 
-
 else{
 
-
-board[
-piece.y+y
-][
-piece.x+x
-]
-=
-piece.type;
-
+board[piece.y+y][piece.x+x]=piece.type;
 
 }
 
@@ -294,7 +261,6 @@ piece.type;
 
 
 function clearLines(){
-
 
 let cleared=0;
 
@@ -318,26 +284,19 @@ y++;
 
 }
 
-
 }
 
 
 
 if(cleared){
 
-
 lines+=cleared;
 
+score+=cleared*100*level;
 
-score += cleared*100*level;
-
-
-level =
-Math.floor(lines/10)+1;
-
+level=Math.floor(lines/10)+1;
 
 updateInfo();
-
 
 }
 
@@ -385,7 +344,6 @@ if(!collision(0,1)){
 
 piece.y++;
 
-
 }
 
 else{
@@ -394,7 +352,6 @@ else{
 merge();
 
 clearLines();
-
 
 piece=randomPiece();
 
@@ -406,20 +363,22 @@ piece=randomPiece();
 
 
 
+
 function hardDrop(){
 
 
 while(!collision(0,1)){
 
+
 piece.y++;
 
 score+=2;
+
 
 }
 
 
 drop();
-
 
 updateInfo();
 
@@ -459,13 +418,33 @@ document.getElementById("level").innerHTML=level;
 
 
 
+
+// CONTROLES CLAVIER CORRIGES
+
 document.addEventListener(
 "keydown",
 e=>{
 
 
+// bloque le défilement de la page
+
+if(
+e.key==="ArrowUp" ||
+e.key==="ArrowDown" ||
+e.key==="ArrowLeft" ||
+e.key==="ArrowRight" ||
+e.code==="Space"
+){
+
+e.preventDefault();
+
+}
+
+
+
 if(e.key==="ArrowLeft")
 move(-1);
+
 
 
 if(e.key==="ArrowRight")
@@ -498,8 +477,9 @@ restartGame();
 
 
 
-}
-);
+});
+
+
 
 
 
@@ -507,7 +487,6 @@ function restartGame(){
 
 
 board=createBoard();
-
 
 piece=randomPiece();
 
@@ -531,6 +510,7 @@ updateInfo();
 
 
 
+
 let last=0;
 
 
@@ -541,18 +521,15 @@ function loop(time){
 if(!gameOver){
 
 
-if(time-last >
-800-level*60){
+if(time-last > 800-level*60){
 
 
 drop();
-
 
 last=time;
 
 
 }
-
 
 
 draw();
@@ -566,6 +543,7 @@ else{
 ctx.fillStyle="white";
 
 ctx.font="40px Arial";
+
 
 ctx.fillText(
 "GAME OVER",
@@ -582,6 +560,8 @@ requestAnimationFrame(loop);
 
 
 }
+
+
 
 
 
