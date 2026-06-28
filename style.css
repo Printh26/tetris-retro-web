@@ -20,9 +20,13 @@ body{
     radial-gradient(circle,#102030,#020409);
 
 
-    font-family: "Courier New", monospace;
+    font-family:"Courier New", monospace;
 
     color:#00ffcc;
+
+    overflow:hidden;
+
+    touch-action:none;
 
 }
 
@@ -82,12 +86,12 @@ h1{
 
 .signature{
 
-
     color:white;
 
     margin-bottom:20px;
 
 }
+
 
 
 
@@ -97,9 +101,7 @@ canvas{
     background:#101014;
 
 
-    border:
-
-    4px solid #00ffcc;
+    border:4px solid #00ffcc;
 
 
     box-shadow:
@@ -107,7 +109,11 @@ canvas{
     0 0 20px #00ffcc;
 
 
+    image-rendering:pixelated;
+
+
 }
+
 
 
 
@@ -117,9 +123,7 @@ canvas{
     margin-top:20px;
 
 
-    border:
-
-    2px solid #00ffcc;
+    border:2px solid #00ffcc;
 
 
     padding:15px;
@@ -137,7 +141,6 @@ canvas{
 
 .panel h2{
 
-
     color:#00ffcc;
 
 }
@@ -152,6 +155,7 @@ canvas{
     color:white;
 
 }
+
 
 
 
@@ -190,7 +194,13 @@ button{
     0 0 15px #00ffcc;
 
 
+    touch-action:none;
+
+    user-select:none;
+
+
 }
+
 
 
 
@@ -205,59 +215,23 @@ button:hover{
 
 
 
-/* effet écran arcade */
-
-canvas{
+/* CONTROLES TACTILES */
 
 
-    image-rendering:pixelated;
-
-}
-
-
-
-body::after{
-
-
-    content:"";
-
-
-    position:fixed;
-
-
-    inset:0;
-
-
-    pointer-events:none;
-
-
-    background:
-
-    repeating-linear-gradient(
-
-        0deg,
-
-        rgba(255,255,255,0.04),
-
-        rgba(255,255,255,0.04) 2px,
-
-        transparent 2px,
-
-        transparent 4px
-
-    );
-
-
-}
 .touch-controls{
 
-margin-top:20px;
 
-display:flex;
+    margin-top:20px;
 
-justify-content:center;
 
-gap:10px;
+    display:flex;
+
+
+    justify-content:center;
+
+
+    gap:10px;
+
 
 }
 
@@ -265,33 +239,74 @@ gap:10px;
 
 .touch-controls button{
 
-width:60px;
 
-height:60px;
+    width:60px;
 
-font-size:25px;
 
-padding:0;
+    height:60px;
+
+
+    font-size:25px;
+
+
+    padding:0;
+
 
 }
 
+
+
+
+
+/* MOBILE */
 
 
 @media(max-width:600px){
 
-canvas{
 
-width:300px;
+.game-container{
 
-height:600px;
+    width:95%;
+
+    padding:15px;
 
 }
 
 
 
-.game-container{
+h1{
 
-width:95%;
+    font-size:35px;
+
+}
+
+
+
+canvas{
+
+    width:300px;
+
+    height:600px;
+
+}
+
+
+
+.panel{
+
+    font-size:14px;
+
+}
+
+
+
+.touch-controls button{
+
+
+    width:55px;
+
+    height:55px;
+
 
 }
 

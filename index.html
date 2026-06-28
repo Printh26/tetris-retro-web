@@ -1,86 +1,151 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tetris Retro - Harry Edition</title>
 
-    <link rel="stylesheet" href="style.css">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tetris Retro - Harry Edition</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
+
 <div class="game-container">
 
-    <h1>TETRIS RETRO</h1>
-    <p class="signature">Jeux Tetris 2D de Harry — Isabelle Edition</p>
 
-    <canvas id="tetris" width="300" height="600"></canvas>
+<h1>TETRIS RETRO</h1>
 
 
-    <div class="panel">
-
-        <h2>STATS</h2>
-
-        <p>
-            Score :
-            <span id="score">0</span>
-        </p>
-
-        <p>
-            Lignes :
-            <span id="lines">0</span>
-        </p>
-
-        <p>
-            Niveau :
-            <span id="level">1</span>
-        </p>
+<p class="signature">
+Jeux Tetris 2D de Harry — Isabelle Edition
+</p>
 
 
-        <h2>COMMANDES</h2>
 
-        <p>⬅️ ➡️ Déplacer</p>
-        <p>⬆️ Rotation</p>
-        <p>⬇️ Descente</p>
-        <p>Espace : Chute</p>
-        <p>P : Pause</p>
-
-    </div>
+<canvas id="tetris" width="300" height="600"></canvas>
 
 
-    <button onclick="restartGame()">
-        RESTART
-    </button>
+
+
+<div class="panel">
+
+
+<h2>STATS</h2>
+
+
+<p>
+Score :
+<span id="score">0</span>
+</p>
+
+
+<p>
+Lignes :
+<span id="lines">0</span>
+</p>
+
+
+<p>
+Niveau :
+<span id="level">1</span>
+</p>
+
+
+
+
+<h2>COMMANDES</h2>
+
+
+<p>⬅️ ➡️ Déplacer</p>
+
+<p>⬆️ Rotation</p>
+
+<p>⬇️ Descente</p>
+
+<p>⚡ Chute rapide</p>
+
+<p>P : Pause</p>
+
+
+
+</div>
+
+
+
+
+<button onclick="restartGame()">
+
+RESTART
+
+</button>
+
+
+
 
 <div class="touch-controls">
 
-<button onclick="move(-1)">
+
+<button 
+ontouchstart="move(-1)"
+onclick="move(-1)">
 ⬅️
 </button>
 
-<button onclick="rotate()">
+
+
+<button
+ontouchstart="rotate()"
+onclick="rotate()">
 🔄
 </button>
 
-<button onclick="move(1)">
+
+
+<button
+ontouchstart="move(1)"
+onclick="move(1)">
 ➡️
 </button>
 
-<button onclick="drop()">
+
+
+<button
+ontouchstart="drop()"
+onclick="drop()">
 ⬇️
 </button>
 
-<button onclick="hardDrop()">
+
+
+<button
+ontouchstart="hardDrop()"
+onclick="hardDrop()">
 ⚡
 </button>
 
-</div>
+
 
 </div>
+
+
+
+
+</div>
+
+
 
 
 <script src="script.js"></script>
 
+
+
 </body>
+
 </html>
